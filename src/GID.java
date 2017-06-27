@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -65,6 +66,13 @@ public class GID {
 		for(int i=1;i<lat_list.size();i++){
 			int gid =gid(lat_list.get(i), lon_list.get(i));
 			gids.add(gid);
+		}
+		
+		// Writing the sampled GIDS
+		PrintStream ps =new PrintStream(new File("kmeans.txt"));
+		System.setOut(ps);
+		for (Integer integer : gids) {
+			System.out.println(integer);
 		}
 		sc.close();
 	}
